@@ -2,7 +2,7 @@
   <v-container style="padding: 0">
     <v-row style="margin: 0">
       <v-carousel
-        height="35vh"
+        :height="mobile ? '45vh' : '60vh'"
         style="width: 100%"
         cycle
         hide-delimiter-background
@@ -71,8 +71,8 @@
                 <v-card
                   :class="['ma-4', selectedClass]"
                   color="grey-lighten-1"
-                  height="10vh"
-                  width="25vw"
+                  :height="mobile ? '15vh' : '20vh'"
+                  :width="mobile ? '40vw' : '25vw'"
                   @click="toggle"
                 >
                   <div class="d-flex fill-height align-center justify-center">
@@ -85,14 +85,15 @@
             </v-slide-group>
 
             <v-expand-transition>
-              <v-sheet v-if="model != null" :height="mobile ? 200 : 300">
+              <v-sheet v-if="model != null" :height="mobile ? 'auto' : 'auto'" :min-height="mobile ? 250 : 400">
                 <div class="d-flex fill-height align-center justify-center">
                   <video-player
                     :src="videos[model]"
                     :poster="`/video/poster-${model + 1}.webp`"
                     controls
                     :volume="0.6"
-                    :height="mobile ? 200 : 300"
+                    :height="mobile ? 250 : 450"
+                    :width="mobile ? '100%' : '80%'"
                   />
                 </div>
               </v-sheet>
