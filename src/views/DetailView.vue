@@ -71,8 +71,8 @@
                 <v-card
                   :class="['ma-4', selectedClass]"
                   color="grey-lighten-1"
-                  :height="mobile ? '15vh' : '20vh'"
-                  :width="mobile ? '40vw' : '25vw'"
+                  height="120"
+                  width="180"
                   @click="toggle"
                 >
                   <div class="d-flex fill-height align-center justify-center">
@@ -85,15 +85,14 @@
             </v-slide-group>
 
             <v-expand-transition>
-              <v-sheet v-if="model != null" :height="mobile ? 'auto' : 'auto'" :min-height="mobile ? 250 : 400">
-                <div class="d-flex fill-height align-center justify-center">
+              <v-sheet v-if="model != null">
+                <div class="video-container">
                   <video-player
                     :src="videos[model]"
                     :poster="`/video/poster-${model + 1}.webp`"
                     controls
                     :volume="0.6"
-                    :height="mobile ? 250 : 450"
-                    :width="mobile ? '100%' : '80%'"
+                    class="video-player"
                   />
                 </div>
               </v-sheet>
@@ -183,5 +182,29 @@ const videos = ['/video/1.mp4']
 .content + .content {
   margin-top: 1rem;
   text-indent: 2em;
+}
+
+.video-container {
+  width: 100%;
+  padding: 16px;
+}
+
+.video-container :deep(.video-js) {
+  width: 100% !important;
+  height: 0 !important;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+
+.video-container :deep(.video-js .vjs-tech) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-container :deep(.video-js .vjs-poster) {
+  background-size: contain;
 }
 </style>
