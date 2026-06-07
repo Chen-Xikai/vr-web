@@ -1,0 +1,92 @@
+@import './base.css';
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(198, 40, 40, 0.2);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(198, 40, 40, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(198, 40, 40, 0.5);
+}
+
+#app {
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+.custom-hotspot {
+  background-image: none;
+}
+
+.center-button {
+  animation: scaleDrew 2.5s ease-in-out infinite;
+}
+
+@keyframes scaleDrew {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.2);
+  }
+}
+
+@font-face {
+  font-family: 'Title';
+  src: url('/title.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Content';
+  src: url('/content.woff2') format('woff2');
+  font-display: swap;
+}
+
+.huge {
+  width: clamp(48px, 10vw, 80px) !important;
+  cursor: pointer;
+}
+
+.display {
+  display: block !important;
+}
